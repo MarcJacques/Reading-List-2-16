@@ -9,17 +9,20 @@
 import Foundation
 class BookController {
     
-    var books: [Book] = []
+    private(set) var books: [Book] = []
     
-    
+    var readBooks: [Book] {
+        return books.filter { $0.hasBeenRead == true }
+    }
+    var unreadBooks: [Book] {
+        return books.filter { $0.hasBeenRead == false }
+        }
     
     var readingListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         return documents.appendingPathComponent("ReadingList.plist")
     }
-    
-    
     
     func saveToPersistentStore() {
         guard let url = readingListURL else { return }
@@ -67,11 +70,11 @@ class BookController {
 //        books[index].hasbeenRead.toggle()
         var updateBook = book
         var readStatus: String
-        if updateBook.hasbeenRead == false {
-            updateBook.hasbeenRead.toggle()
+        if updateBook.hasBeenRead == false {
+            updateBook.hasBeenRead.toggle()
             readStatus = "You have not read \(book.title). "
         } else {
-            updateBook.hasbeenRead.toggle()
+            updateBook.hasBeenRead.toggle()
             readStatus = "You already read \(book.title). "
         }
         print(readStatus)

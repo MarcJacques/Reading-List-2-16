@@ -10,12 +10,12 @@ import Foundation
 struct Book: Equatable, Codable {
     var title: String
     var reasonToRead: String
-    var hasbeenRead: Bool
+    var hasBeenRead: Bool
     
     init(title: String, reasonToRead: String, hasbeenRead: Bool) {
         self.title = title
         self.reasonToRead = reasonToRead
-        self.hasbeenRead = false
+        self.hasBeenRead = false
         
     }
 }

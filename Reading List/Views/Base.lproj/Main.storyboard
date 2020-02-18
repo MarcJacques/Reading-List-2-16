@@ -90,7 +90,6 @@
                                                         <constraint firstAttribute="width" secondItem="2sd-JS-jkF" secondAttribute="height" multiplier="1:1" id="btC-O2-bq7"/>
                                                     </constraints>
                                                     <state key="normal" image="unchecked"/>
-                                                    <state key="selected" image="checked"/>
                                                     <connections>
                                                         <action selector="checkboxButtonTapped:" destination="4LR-91-FkM" eventType="touchUpInside" id="hMM-b7-x7k"/>
                                                     </connections>
@@ -106,7 +105,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checkButton" destination="2sd-JS-jkF" id="n2F-oi-Ewe"/>
+                                    <outlet property="checkboxButton" destination="2sd-JS-jkF" id="Nai-hE-yyf"/>
                                     <outlet property="titleLabel" destination="m40-2k-sg1" id="FH6-u2-h2d"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="CellToDetaillVCSegue" id="d4w-Dr-Ty1"/>
                                 </connections>
@@ -149,7 +148,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checked" width="50" height="50"/>
         <image name="unchecked" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
