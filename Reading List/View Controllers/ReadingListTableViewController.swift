@@ -87,8 +87,13 @@ class ReadingListTableViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if segue.identifier == "NewBookSegue" {
             let bookDVC = segue.destination as! BookDetailViewController
-            bookDVC.bookController = book
-           }
+            bookDVC.bookController = bookController
+           } else {
+            let bookDVC = segue.destination as! BookDetailViewController
+            bookDVC.bookController = bookController
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            bookDVC.book = bookFor(indexPath: indexPath)
+        }
        }
 }
     extension ReadingListTableViewController: BookTableViewCellDelegate {

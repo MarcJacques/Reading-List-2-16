@@ -30,21 +30,27 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         if book == nil {
-        guard let title = titleTextfield.text,
-            let reason = reasonTextView.text,
-            !title.isEmpty,
-            !reason.isEmpty else { return }
-        bookController?.createBookEntry(title: title, reasonToRead: reason, hasBeenRead: false)
-        self.navigationController?.title = title
+            guard let title = titleTextfield.text,
+                let reason = reasonTextView.text,
+                !title.isEmpty,
+                !reason.isEmpty else { return }
+            bookController?.createBookEntry(title: title, reasonToRead: reason, hasBeenRead: false)
+            self.navigationController?.title = title
+            updateViews()
         } else {
             guard let book = book,
-            let newTitle = titleTextfield.text,
-            let newReason = reasonTextView.text,
-            !newTitle.isEmpty,
-            !newReason.isEmpty else { return }
+                let newTitle = titleTextfield.text,
+                let newReason = reasonTextView.text,
+                !newTitle.isEmpty,
+                !newReason.isEmpty else { return }
             bookController?.editTitleAndReason(book: book, newTitle: newTitle, newReasonToRead: newReason)
+            updateViews()
         }
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+        
     }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -64,7 +70,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-   
+    
     
     
 }
